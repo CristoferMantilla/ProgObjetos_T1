@@ -4,6 +4,8 @@
  */
 package progobjetos_t1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author crist
@@ -16,6 +18,17 @@ public class ProgObjetos_T1 {
     public static void main(String[] args) 
     {
         // TODO code application logic here
+        Scanner scanner = new Scanner(System.in);
+        Controlador controlador = new Controlador();
+        int opcion = 0;
+        
+        while (opcion != 3) 
+        {
+            System.out.println("1. Agregar Trabajador");
+            System.out.println("2. Listar Trabajadores");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opción: ");
+        }
     }
     
 }
