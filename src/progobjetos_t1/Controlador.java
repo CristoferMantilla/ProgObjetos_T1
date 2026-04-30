@@ -12,22 +12,24 @@ import java.util.ArrayList;
  */
 public class Controlador 
 {
-    ArrayList<Trabajador>listaTrabajadores;
-    public void agregarTrabajador(Trabajador t) {
-        listaTrabajadores.add(t);
-        System.out.println("Trabajador se agrego con exito");
+    ArrayList<Trabajador> listaTrabajadores = new ArrayList();
+
+    // Constructor
+    public Controlador() {
+        // ¡Esta es la línea que te falta para que deje de ser null!
+        listaTrabajadores = new ArrayList<>(); 
     }
 
-    public void listarTrabajadores() 
+    public void agregarTrabajador(Trabajador t) {
+        // Ahora esto ya no dará error en la línea 17
+        listaTrabajadores.add(t); 
+    }
+    void listarTrabajadores() 
     {
-        if (listaTrabajadores==null) 
+        System.out.println("La lista contiene los siguientes objetos");
+        for (Trabajador aux :listaTrabajadores)
         {
-            System.out.println("No hay trabajadores registrados en el sistema.");
-            return;
-        }
-        System.out.println("LISTA DE TRABAJADORES:");
-        for (Trabajador t : listaTrabajadores) {
-            System.out.println(t.toString());
+            aux.VerDatos();
         }
     }
     
