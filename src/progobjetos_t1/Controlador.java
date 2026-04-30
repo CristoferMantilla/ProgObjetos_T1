@@ -4,10 +4,31 @@
  */
 package progobjetos_t1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crist
  */
-public class Controlador {
+public class Controlador 
+{
+    ArrayList<Trabajador>listaTrabajadores;
+    public void agregarTrabajador(Trabajador t) {
+        listaTrabajadores.add(t);
+        System.out.println("Trabajador se agrego con exito");
+    }
+
+    public void listarTrabajadores() 
+    {
+        if (listaTrabajadores==null) 
+        {
+            System.out.println("No hay trabajadores registrados en el sistema.");
+            return;
+        }
+        System.out.println("LISTA DE TRABAJADORES:");
+        for (Trabajador t : listaTrabajadores) {
+            System.out.println(t.toString());
+        }
+    }
     
 }
