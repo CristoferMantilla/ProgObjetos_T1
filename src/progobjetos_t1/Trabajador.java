@@ -20,4 +20,19 @@ public class Trabajador
     private int cantidadHijos;
     private String turno;
     
+    private void validarDocumento(String tipo, String numero) {
+        if (tipo.equalsIgnoreCase("DNI") && numero.length() != 8) {
+            System.out.println("El DNI debe tener 8 dígitos.");
+        }
+        if (tipo.equalsIgnoreCase("Carnet de Extranjeria") && numero.length() != 9) {
+            System.out.println("El Carnet de Extranjeria debe tener 9 dígitos.");
+        }
+    }
+    public void VerDatos(){
+        System.out.println("Cod: "+this.codigo+" Nombre: "+this.nombre+" TipoDoc: "
+                +this.tipoDocumento+" NroDoc:"+this.numeroDocumento+
+                " Régimen: "+this.regimenLaboral+"FondoPension: "+this.fondoPension
+                +" SueldoBase: S/"+this.sueldoBase+"CantHijos: "+this.cantidadHijos
+                +" Turno: "+this.turno);
+    }
 }
