@@ -55,11 +55,11 @@ public class Trabajador
             else{
                 System.out.println("Error cantidad de digitos debe ser 8");
             }
-        }else if(this.tipoDocumento.equalsIgnoreCase("ce")){
-            if(numeroDocumento.length()==9){
+        }else if(this.tipoDocumento.equalsIgnoreCase("Residencia Temporal")){
+            if(numeroDocumento.length()==11){
                 this.numeroDocumento = numeroDocumento;
             }else{
-                System.out.println("Error cantidad de digitos debe ser 9");
+                System.out.println("Error cantidad de digitos debe ser 11");
             }
         }
     }
@@ -119,5 +119,49 @@ public class Trabajador
                 " Régimen: "+this.regimenLaboral+"FondoPension: "+this.fondoPension
                 +" SueldoBase: S/"+this.sueldoBase+"CantHijos: "+this.cantidadHijos
                 +" Turno: "+this.turno);
+    }
+    public double calcularRetencionPension() 
+    {
+        if (regimenLaboral.equalsIgnoreCase("Locacion")) 
+        {
+        return 0.0;
+        }
+    
+        double porcentaje = 0.0;
+    
+        if (fondoPension.equalsIgnoreCase("INTEGRA")) 
+        {
+        porcentaje = 0.121;
+        }
+        else if (fondoPension.equalsIgnoreCase("PRIMA")) 
+        {
+        porcentaje = 0.125;
+        } 
+        else if (fondoPension.equalsIgnoreCase("HABITAT")) 
+        {
+        porcentaje = 0.127;
+        } 
+        else if (fondoPension.equalsIgnoreCase("ONP")) 
+        {
+        porcentaje = 0.13;
+        }
+        return sueldoBase * porcentaje;
+    }
+    public double calcularBonificaciones() {
+        if (regimenLaboral.equalsIgnoreCase("Locacion")) {
+            return 0.0;
+        }
+
+        double bonos = 0.0;
+        if (cantidadHijos > 0) {
+            bonos += 102.5; 
+        }
+        if (turno.equalsIgnoreCase("Noche")) {
+            bonos += (sueldoBase * 0.35);
+        }
+        return bonos;
+    }
+    public double calcularSueldoNeto() {
+        return sueldoBase + calcularBonificaciones() - calcularRetencionPension();
     }
 }
